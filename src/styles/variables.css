@@ -1,0 +1,46 @@
+/* variables.css : Global design tokens para Gridded */
+
+:root {
+  /* 🎨 Colores por defecto (modo claro) */
+  --color-bg: rgb(255, 255, 255); /* Fondo principal */
+  --color-bg-alt: rgb(237, 237, 237); /* Fondo alternativo */
+  --color-text: #21242e; /* Texto principal */
+  --color-text-alt: rgb(127, 126, 144); /* Texto secundario */
+  --color-border: #020013; /* Bordes suaves */
+
+  /* 🎨 Brand Colors */
+  --gr-black: #020013;
+  --gr-dark-lav: #2c1860;
+  --gr-electric-blue: #2600fc;
+  --gr-coral: #ff8a5b;
+  --gr-peach: #f9be6a;
+
+  /* ⚫️ Grayscale Colors */
+  --gr-black-solid: #000000;
+  --gr-grey-dark: #141414;
+  --gr-grey-light: #f8f8f8;
+  --gr-grey-medium: #d3d3d3;
+  --gr-white: #ffffff;
+
+  /* 🖋️ Tipografías */
+  --font-primary: "DM Sans", sans-serif;
+  --font-secondary: "Inter", sans-serif;
+
+  /* 🔠 Tamaños de texto base (puedes ampliarlos según necesidades) */
+  --text-xl: 2rem; /* H1 Hero */
+  --text-lg: 1.5rem; /* Títulos */
+  --text-md: 1.25rem; /* Subtítulos, callouts */
+  --text-sm: 1rem; /* Texto general */
+  --text-xs: 0.875rem; /* Detalles */
+}
+
+/* 🌑 Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--gr-black);
+    --color-bg-alt: var(--gr-dark-lav);
+    --color-text: var(--gr-black);
+    --color-text-alt: #d3d3d3;
+    --color-border: #2c1860;
+  }
+}

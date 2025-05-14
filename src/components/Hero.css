@@ -1,0 +1,44 @@
+.hero {
+  /*   background: radial-gradient(circle at top center, #2c1860 15%, #020013 100%); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+div.hero-logo {
+  width: 100%;
+  padding: 0 1rem;
+  /*   padding: 1rem 0 1rem 0; */
+}
+
+div.hero-logo p#logo1 {
+}
+
+div.hero-logo img {
+  width: 100%;
+}
+
+div.hero-content-bg {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /*   clip-path: inset(10% 0 10% 0); */
+  overflow: hidden;
+}
+
+div.hero-content-bg video {
+  width: 100%;
+  margin: -2rem 0 -1.5rem 0;
+  object-fit: cover;
+}
+
+.hero-logo {
+  /*   position: absolute;
+  bottom: 2rem;
+     right: 2rem; 
+  opacity: 0.2;
+  width: 180px; */
+}

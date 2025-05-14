@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+.nav {
+  z-index: 10;
+}
+
+.nav ul {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.nav li {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav li:nth-child(2) {
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+.nav-logo img {
+}
+
+.nav-links a {
+  display: block;
+  padding: 1.6rem 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.nav-links li {
+  cursor: pointer;
+  display: block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  will-change: background-color, transform;
+}
+
+.nav-links li:hover {
+  background-color: var(--color-bg);
+}

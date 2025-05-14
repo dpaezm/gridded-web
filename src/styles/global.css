@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+/* Importa primero las variables */
+@import "./variables.css";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /*   background: radial-gradient(circle at top center, #2c1860, #020013 10%); */
+}
+
+/* Tipografía global */
+body {
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Encabezados */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  line-height: 1;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.1;
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  line-height: 1.1;
+}
+
+p {
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.6;
+  line-height: 1.4;
+}
+
+p#logo1 {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: clamp(1rem, 11.5vw, 100rem); /* ajusta según pantalla */
+  font-weight: 400;
+  white-space: nowrap; /* evita que se parta */
+  line-height: 1.7;
+}
+
+p#logo2 {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: clamp(1rem, 10vw, 60px); /* ajusta según pantalla */
+  font-weight: 400;
+  line-height: 90px;
+  /*   margin: 2rem 0; */
+}
+
+.text-xs {
+  font-size: clamp(0.875rem, 0.8vw, 1rem);
+  color: var(--color-text-alt);
+  line-height: 1.4;
+}
+
+li {
+  list-style: none;
+}
+
+/* Enlaces */
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: transparent;
+}
+
+/* Botones con tipografía */
+button {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
