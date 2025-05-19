@@ -1,8 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-48px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .nav {
   z-index: 10;
+  /*   animation: fadeIn 2s linear; */
 }
 
 .nav ul {
@@ -25,6 +47,10 @@
 .nav-logo img {
 }
 
+.nav-links {
+  animation: slideDown 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 .nav-links a {
   display: block;
   padding: 1.6rem 0;
@@ -37,8 +63,6 @@
 .nav-links li {
   cursor: pointer;
   display: block;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  will-change: background-color, transform;
 }
 
 .nav-links li:hover {

@@ -1,0 +1,13 @@
+.servicios-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servicios > * {
+  width: 100%;
+}
+
+.servicios h3 {
+  margin: 4rem 0 1rem 0;
+}

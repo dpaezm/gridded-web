@@ -1,0 +1,54 @@
+/* Toastify custom styles for Gridded */
+
+.Toastify__toast {
+  all: unset !important;
+
+  font-family: var(--font-primary) !important;
+  font-size: var(--text-sm) !important;
+  color: var(--color-text) !important;
+  background-color: var(--color-bg) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+  padding: 1.25rem !important;
+  text-transform: none;
+}
+
+/* Success (verde Gridded custom) */
+.Toastify__toast--success {
+  background: var(--gr-peach) !important;
+  color: var(--gr-black) !important;
+}
+
+/* Error (negro elegante Gridded) */
+.Toastify__toast--error {
+  background: var(--gr-black) !important;
+  color: var(--gr-white) !important;
+}
+
+/* Info (eléctrico para mensajes informativos si los usas) */
+.Toastify__toast--info {
+  background: var(--gr-electric-blue) !important;
+  color: var(--gr-white) !important;
+}
+
+/* Warning (coral suave si se implementa en el futuro) */
+.Toastify__toast--warning {
+  background: var(--gr-coral) !important;
+  color: var(--gr-black-solid) !important;
+}
+
+/* Progreso */
+.Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Botón de cerrar */
+.Toastify__close-button {
+  color: var(--color-text) !important;
+  opacity: 0.6;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}

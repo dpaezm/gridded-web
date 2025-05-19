@@ -6,10 +6,10 @@ export default function Nav() {
     <nav className="nav">
       <ul className="nav-links">
         <li>
-          <a href="#automatizacion">Automatización</a>
+          <a href="#agentes">Agentes</a>
         </li>
         <li>
-          <a href="#agentes">Agentes</a>
+          <a href="#automatizacion">Automatización</a>
         </li>
         <li>
           <a href="#contact">Contacto</a>

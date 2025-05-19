@@ -17,8 +17,12 @@ export default function Hero() {
         </video>
       </div>
       <div className="hero-content">
-        <h1>¿Sigues dedicando recursos al trabajo que puede hacerse solo?</h1>
-        <p>La automatización ya no es una opción. Es tu ventaja competitiva.</p>
+        {/*         <h2>¿Sigues dedicando recursos al trabajo que puede hacerse solo?</h2> */}
+        <h1>
+          Automatizamos tareas repetitivas <br />
+          para que ganes tiempo, reduzcas <br />
+          costes y escales sin fricción.
+        </h1>
       </div>
     </section>
   );

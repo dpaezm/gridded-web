@@ -1,20 +1,74 @@
+import { useState } from "react";
 import "./Contact.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Contact() {
-  return (
-    <section className="contact" id="contact">
-      <div className="contact-container">
-        <h2>¿Hablamos?</h2>
-        <p>
-          Cuéntame brevemente en qué punto está tu empresa y qué te gustaría automatizar. Te responderé personalmente.
-        </p>
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-        <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-          <input type="text" name="name" placeholder="Nombre" required />
-          <input type="email" name="email" placeholder="Correo electrónico" required />
-          <textarea name="message" rows="5" placeholder="Mensaje" required></textarea>
-          <button type="submit">Enviar mensaje</button>
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await fetch("http://localhost:5678/webhook-test/gridded-contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        toast.success("Tu mensaje se ha enviado. En breve nos pondremos en contacto contigo.");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error("Hubo un error al enviar el mensaje");
+      }
+    } catch (error) {
+      toast.error("Error de conexión. Inténtalo más tarde.");
+    }
+  };
+  return (
+    <section className="contact-section" id="contact">
+      <div className="contact-container">
+        <h3>¿Tienes una idea?</h3>
+        <h2 className="contact-title">¡Hablemos!</h2>
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <input type="text" name="name" placeholder="Nombre" value={formData.name} onChange={handleChange} required />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Mensaje"
+            value={formData.message}
+            onChange={handleChange}
+            rows="6"
+            required
+          />
+          <button type="submit">SEND</button>
         </form>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover
+          draggable
+          theme="light"
+        />
       </div>
     </section>
   );

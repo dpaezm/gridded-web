@@ -1,0 +1,69 @@
+.option-header {
+  all: unset;
+  line-height: 2rem;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  background: none;
+  cursor: pointer;
+}
+
+.option-content {
+  all: unset;
+  padding: 1rem;
+  background: var(--color-bg-alt);
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  min-width: 250px;
+  position: relative;
+}
+
+.casos-uso {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.audio-player-container {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.native-audio-player {
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  filter: invert(1);
+}
+
+.native-audio-player::-webkit-media-controls-panel {
+  display: flex;
+  background: transparent;
+  padding: 0;
+}
+
+.native-audio-player::-webkit-media-controls-play-button,
+.native-audio-player::-webkit-media-controls-current-time-display,
+.native-audio-player::-webkit-media-controls-time-remaining-display,
+.native-audio-player::-webkit-media-controls-mute-button,
+.native-audio-player::-webkit-media-controls-volume-slider,
+.native-audio-player::-webkit-media-controls-timeline-container {
+  display: none;
+}
+
+.native-audio-player::-webkit-media-controls-timeline {
+  background: var(--color-primary);
+  height: 4px;
+  border-radius: 2px;
+}
+
+.native-audio-player::-webkit-media-controls-play-button {
+  display: flex;
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.playing-indicator {
+  margin-left: 5px;
+  color: var(--color-primary);
+}

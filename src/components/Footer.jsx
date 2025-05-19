@@ -1,12 +1,40 @@
+import { useEffect, useRef } from 'react';
 import "./Footer.css";
 import logo from "../assets/Gridded_logo_linear_black.svg";
 import imagotipo from "../assets/Gridded_imagotipo_black.svg";
 
 export default function Footer() {
+  const imagotipoRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('spin');
+        }
+      });
+    }, { threshold: 0.5 });
+
+    if (imagotipoRef.current) {
+      observer.observe(imagotipoRef.current);
+    }
+
+    return () => {
+      if (imagotipoRef.current) {
+        observer.unobserve(imagotipoRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section className="footer" id="footer">
       <div className="footer-logo">
-        <img src={imagotipo} alt="logo Gridded Agency" className="imagotipo" />
+        <img 
+          ref={imagotipoRef} 
+          src={imagotipo} 
+          alt="logo Gridded Agency" 
+          className="imagotipo" 
+        />
         <p id="logo2">GRIDDED.AGENCY</p>
       </div>
 
@@ -14,10 +42,10 @@ export default function Footer() {
         <li>
           <ul className="footer-links">
             <li>
-              <a href="#automatizacion">Automatización</a>
+              <a href="#servicios">Servicios</a>
             </li>
             <li>
-              <a href="#agentes">Agentes</a>
+              <a href="#automatizacion">Automatización</a>
             </li>
             <li>
               <a href="#contact">Contacto</a>
@@ -30,7 +58,7 @@ export default function Footer() {
           </a>
         </li>
         <li>
-          <p>[ © ] [ 2025 ]</p>
+          <p>[ &copy; ] [ 2025 ]</p>
         </li>
       </ul>
     </section>
