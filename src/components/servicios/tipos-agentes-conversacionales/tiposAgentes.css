@@ -26,44 +26,90 @@
 
 .audio-player-container {
   width: 100%;
-  padding: 10px 0;
+  padding: 16px;
+  /* background: var(--gr-grey-light); */
+  border-radius: 8px;
+  margin-top: 20px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease, padding 0.3s ease;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-.native-audio-player {
+.audio-player-container.show {
+  opacity: 1;
+  max-height: 500px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.global-audio-player {
   width: 100%;
-  height: 30px;
-  background: transparent;
-  filter: invert(1);
+  max-width: none;
+  margin: 0 auto;
+  display: block;
 }
 
-.native-audio-player::-webkit-media-controls-panel {
+.agente-option {
+  position: relative;
   display: flex;
-  background: transparent;
-  padding: 0;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.native-audio-player::-webkit-media-controls-play-button,
-.native-audio-player::-webkit-media-controls-current-time-display,
-.native-audio-player::-webkit-media-controls-time-remaining-display,
-.native-audio-player::-webkit-media-controls-mute-button,
-.native-audio-player::-webkit-media-controls-volume-slider,
-.native-audio-player::-webkit-media-controls-timeline-container {
-  display: none;
+.icon-loading {
+  animation: spin 1s linear infinite;
 }
 
-.native-audio-player::-webkit-media-controls-timeline {
-  background: var(--color-primary);
-  height: 4px;
-  border-radius: 2px;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.native-audio-player::-webkit-media-controls-play-button {
+.loading-message {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.loading-message.visible {
+  opacity: 1;
+}
+
+.waveform-container {
+  width: 100%;
+  height: 100px;
+  /*   background-color: var(--gr-grey-light); */
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  position: relative;
+  display: block !important;
+}
+
+.wavesurfer-controls {
   display: flex;
-  background: transparent;
-  color: var(--color-primary);
+  justify-content: center;
 }
 
-.playing-indicator {
-  margin-left: 5px;
-  color: var(--color-primary);
+.wavesurfer-controls button {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border: none;
+  background-color: var(--gr-coral);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.wavesurfer-controls button:hover {
+  background-color: var(--gr-coral);
 }
