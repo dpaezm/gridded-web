@@ -1,0 +1,52 @@
+[
+  {
+    "titulo": "Recepción automática para clínicas y centros médicos: llamadas constantes interrumpen el trabajo administrativo.",
+    "solucion": "Agente por voz que responde, agenda, cancela y confirma citas.",
+    "beneficio": "Libera tiempo al personal y evita perder pacientes por llamadas no atendidas."
+  },
+  {
+    "titulo": "Gestión de reservas en peluquerías y centros de estética: WhatsApps, llamadas, Instagram… caos en la agenda.",
+    "solucion": "Chatbot que unifica la gestión, sugiere servicios complementarios y organiza la agenda.",
+    "beneficio": "Más reservas, más orden y más ventas por upsell automatizado."
+  },
+  {
+    "titulo": "Atención al cliente 24/7 en tiendas de materiales y construcción: preguntas repetidas sobre stock, precios o entregas.",
+    "solucion": "Agente web o WhatsApp que responde automáticamente y deriva solo lo importante.",
+    "beneficio": "Menos interrupciones y atención más rápida sin aumentar plantilla."
+  },
+  {
+    "titulo": "Automatización de pre-check-in y atención para hoteles pequeños: clientes escriben fuera de horario con dudas de llegada.",
+    "solucion": "Agente que envía instrucciones personalizadas y atiende dudas comunes.",
+    "beneficio": "Mejor experiencia de cliente y menos trabajo para el personal de recepción."
+  },
+  {
+    "titulo": "Flujos internos para pymes industriales o logísticas: procesos repetitivos en papel o Excel que roban tiempo.",
+    "solucion": "Automatización de validaciones, pedidos, informes o avisos.",
+    "beneficio": "Menos errores, más velocidad, y control total del proceso."
+  },
+  {
+    "titulo": "Empresas que gestionan leads por formulario o email: muchos leads entran y se quedan sin respuesta.",
+    "solucion": "Agente que filtra, responde al instante y guarda los datos en CRM o Excel.",
+    "beneficio": "Nunca se pierde un lead. Más cierres, más facturación."
+  },
+  {
+    "titulo": "Automatización de tareas de facturación y contabilidad: tareas administrativas repetitivas ocupan horas.",
+    "solucion": "Integración con Holded, ContaSimple o Google Sheets para crear y enviar facturas automáticamente.",
+    "beneficio": "Ahorro de tiempo y menos errores humanos."
+  },
+  {
+    "titulo": "Academias o centros de formación: alto volumen de consultas y cambios de clases.",
+    "solucion": "Agente que responde dudas frecuentes, gestiona reservas y da seguimiento a exalumnos.",
+    "beneficio": "Atención profesional sin necesidad de personal extra."
+  },
+  {
+    "titulo": "Tiendas online con atención por WhatsApp: clientes preguntan por estado de pedidos o devoluciones.",
+    "solucion": "Chatbot que integra Shopify/Prestashop y responde automáticamente.",
+    "beneficio": "Atención rápida y profesional sin saturar al equipo."
+  },
+  {
+    "titulo": "Consultorías o agencias con trabajo repetitivo: horas de trabajo manual en tareas repetitivas.",
+    "solucion": "Automatización de entregables, generación de informes, seguimiento de clientes.",
+    "beneficio": "Mayor rentabilidad por proyecto y entrega más rápida al cliente."
+  }
+]

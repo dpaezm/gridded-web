@@ -9,6 +9,8 @@ import Contact from "./components/Contact";
 import Servicios from "./components/Servicios";
 import Footer from "./components/Footer";
 import { ToastContainer } from "react-toastify";
+import Ventas from "./components/Ventas";
+import Subscribe from "./components/Subscribe";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <>
               <Nav />
               <Hero />
+              {/*               <Ventas />
+              <Subscribe /> */}
               <Servicios />
               <Contact />
               <Footer />

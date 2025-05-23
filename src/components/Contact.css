@@ -11,6 +11,9 @@
 .contact-container h3 {
   margin: 5rem 0 3rem 0;
 }
+.contact-container p {
+  padding-bottom: 2rem;
+}
 .contact-title {
   margin-bottom: 3rem;
 }

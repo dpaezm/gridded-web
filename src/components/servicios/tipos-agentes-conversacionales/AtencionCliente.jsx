@@ -11,16 +11,8 @@ export default function AtencionCliente({ isActive, isPlaying, onClick }) {
           onClick();
         }}
       >
-        [ Atención al cliente ] {isPlaying && <span className="playing-indicator">▶</span>}
+        [ Atención al cliente ] {isPlaying && <span className="playing-indicator"></span>}
       </button>
-
-      {isActive && (
-        <div className="option-content">
-          <div className="audio-player-container">
-            <audio controls className="native-audio-player" src="/audio/atencion/caso-uso-1.m4a" />
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 import "./Footer.css";
 import logo from "../assets/Gridded_logo_linear_black.svg";
 import imagotipo from "../assets/Gridded_imagotipo_black.svg";
@@ -7,13 +7,16 @@ export default function Footer() {
   const imagotipoRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('spin');
-        }
-      });
-    }, { threshold: 0.5 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("spin");
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
     if (imagotipoRef.current) {
       observer.observe(imagotipoRef.current);
@@ -29,12 +32,7 @@ export default function Footer() {
   return (
     <section className="footer" id="footer">
       <div className="footer-logo">
-        <img 
-          ref={imagotipoRef} 
-          src={imagotipo} 
-          alt="logo Gridded Agency" 
-          className="imagotipo" 
-        />
+        <img ref={imagotipoRef} src={imagotipo} alt="logo Gridded Agency" className="imagotipo" />
         <p id="logo2">GRIDDED.AGENCY</p>
       </div>
 

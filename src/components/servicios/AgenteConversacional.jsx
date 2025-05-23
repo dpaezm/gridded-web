@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Agente-Automatizacion.css";
 import "./tipos-agentes-conversacionales/tiposAgentes.css";
+import "./../../styles/variables.css";
 import AtencionCliente from "./tipos-agentes-conversacionales/AtencionCliente";
 import Recepcion from "./tipos-agentes-conversacionales/Recepcion";
 import CallCenter from "./tipos-agentes-conversacionales/CallCenter";
-import WaveSurfer from "wavesurfer.js";
+import { createWaveSurfer } from "./../../utils/helpers/createWaveSurfer";
 
 export default function AgenteConversacional() {
   const [activeOption, setActiveOption] = useState(null);
@@ -15,54 +16,36 @@ export default function AgenteConversacional() {
   const [showLoadingMessage, setShowLoadingMessage] = useState(false);
   const waveformRef = useRef(null);
   const wavesurferRef = useRef(null);
+
   useEffect(() => {
-    const initWaveSurfer = async () => {
-      if (waveformRef.current && !wavesurferRef.current) {
-        try {
-          wavesurferRef.current = new WaveSurfer({
-            container: waveformRef.current,
-            waveColor: "var(--gr-grey-medium)",
-            progressColor: "var(--gr-electric-blue)",
-            cursorColor: "var(--gr-electric-blue)",
-            barWidth: 3,
-            height: 100,
-          });
+    if (waveformRef.current && !wavesurferRef.current) {
+      try {
+        wavesurferRef.current = createWaveSurfer(waveformRef.current);
+        setIsWaveSurferReady(true);
 
-          // ✅ Ahora sí marcamos como listo
-          setIsWaveSurferReady(true);
-
-          wavesurferRef.current.on("error", (error) => {
-            console.error("WaveSurfer error:", error);
-          });
-
-          wavesurferRef.current.on("play", () => setIsPlaying(true));
-          wavesurferRef.current.on("pause", () => setIsPlaying(false));
-          wavesurferRef.current.on("finish", () => setIsPlaying(false));
-        } catch (error) {
-          console.error("Error initializing WaveSurfer:", error);
-        }
+        wavesurferRef.current.on("error", (error) => console.error("WaveSurfer error:", error));
+        wavesurferRef.current.on("play", () => setIsPlaying(true));
+        wavesurferRef.current.on("pause", () => setIsPlaying(false));
+        wavesurferRef.current.on("finish", () => setIsPlaying(false));
+      } catch (error) {
+        console.error("Error initializing WaveSurfer:", error);
       }
-    };
-
-    initWaveSurfer();
+    }
 
     return () => {
-      if (wavesurferRef.current) {
-        wavesurferRef.current.destroy();
-        wavesurferRef.current = null;
-      }
+      wavesurferRef.current?.destroy();
+      wavesurferRef.current = null;
     };
   }, []);
 
   const handleClickOutside = (e) => {
     if (!e.target.closest(".servicio-content")) {
       setActiveOption(null);
-      if (wavesurferRef.current) {
-        wavesurferRef.current.pause();
-        setIsPlaying(false);
-      }
+      wavesurferRef.current?.pause();
+      setIsPlaying(false);
     }
   };
+
   const handleOptionClick = async (option) => {
     if (!wavesurferRef.current) return;
 
@@ -84,8 +67,7 @@ export default function AgenteConversacional() {
         option === "callcenter" ? "caso-uso-2" : option === "recepcion" ? "caso-uso-3" : "caso-uso-4"
       }.m4a`;
 
-      await wavesurferRef.current.load(audioUrl); // 🔁 Await aquí
-
+      await wavesurferRef.current.load(audioUrl);
       setIsLoading(false);
       wavesurferRef.current.play();
     } catch (error) {
@@ -107,23 +89,17 @@ export default function AgenteConversacional() {
           <CallCenter
             isActive={activeOption === "callcenter"}
             isPlaying={isPlaying && activeOption === "callcenter"}
-            onClick={() => {
-              if (isWaveSurferReady) handleOptionClick("callcenter");
-            }}
+            onClick={() => isWaveSurferReady && handleOptionClick("callcenter")}
           />
           <Recepcion
             isActive={activeOption === "recepcion"}
             isPlaying={isPlaying && activeOption === "recepcion"}
-            onClick={() => {
-              if (isWaveSurferReady) handleOptionClick("recepcion");
-            }}
+            onClick={() => isWaveSurferReady && handleOptionClick("recepcion")}
           />
           <AtencionCliente
             isActive={activeOption === "atencioncliente"}
             isPlaying={isPlaying && activeOption === "atencioncliente"}
-            onClick={() => {
-              if (isWaveSurferReady) handleOptionClick("atencioncliente");
-            }}
+            onClick={() => isWaveSurferReady && handleOptionClick("atencioncliente")}
           />
         </div>
 

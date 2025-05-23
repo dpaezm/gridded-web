@@ -38,8 +38,12 @@ export default function Contact() {
   return (
     <section className="contact-section" id="contact">
       <div className="contact-container">
-        <h3>¿Tienes una idea?</h3>
-        <h2 className="contact-title">¡Hablemos!</h2>
+        <h3>¿Puede tu empresa aprovechar la IA de forma real y rentable?</h3>
+        <p className="contact-text">
+          Solo trabajamos con empresas que pueden implementar inteligencia artificial con impacto directo en costes y
+          eficiencia. Cuéntanos tu situación y valoraremos si podemos ayudarte.
+        </p>
+        {/*         <h2 className="contact-title">¡Escríbenos!</h2> */}
         <form className="contact-form" onSubmit={handleSubmit}>
           <input type="text" name="name" placeholder="Nombre" value={formData.name} onChange={handleChange} required />
           <input
@@ -52,13 +56,18 @@ export default function Contact() {
           />
           <textarea
             name="message"
-            placeholder="Mensaje"
+            placeholder="Describe qué te preocupa y donde crees que tu negocio se estanca."
             value={formData.message}
             onChange={handleChange}
             rows="6"
             required
           />
-          <button type="submit">SEND</button>
+          <p>
+            Analizamos personalmente cada solicitud.
+            <br />
+            Te responderemos en menos de 24h.
+          </p>
+          <button type="submit">Quiero empezar el proceso</button>
         </form>
         <ToastContainer
           position="bottom-right"

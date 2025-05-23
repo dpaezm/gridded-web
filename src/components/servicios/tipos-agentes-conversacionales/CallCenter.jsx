@@ -1,5 +1,5 @@
 import React from "react";
-import "../Agente-Automatizacion.css";
+import "./tiposAgentes.css";
 
 export default function CallCenter({ isActive, isPlaying, onClick }) {
   return (
@@ -11,16 +11,8 @@ export default function CallCenter({ isActive, isPlaying, onClick }) {
           onClick();
         }}
       >
-        [ Call Center ] {isPlaying && <span className="playing-indicator">▶</span>}
+        [ Call Center ] {isPlaying && <span className="playing-indicator"></span>}
       </button>
-
-      {isActive && (
-        <div className="option-content">
-          <div className="audio-player-container">
-            <audio controls className="native-audio-player" src="/audio/callcenter/caso-uso-2.m4a" />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
