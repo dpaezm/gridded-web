@@ -6,7 +6,7 @@ import Automatizacion from "./servicios/Automatizacion";
 export default function Servicios() {
   return (
     <section className="servicios" id="servicios">
-      <h3>Así es cómo podemos ayudarte</h3>
+      <h3>Así podemos ayudar</h3>
       <AgenteConversacional />
       <AgenteTexto />
       <Automatizacion />

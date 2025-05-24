@@ -36,9 +36,9 @@
   /* 📐 Aspect ratios */
   --hero-aspect-ratio: 0.5; /* 1:2 ratio (height:width) */
 
-  --spacing-small: 0.25rem;
-  --spacing-medium: 0.5rem;
-  --spacing-large: 1rem;
+  --spacing-small: 0.5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 1.25rem;
 }
 
 /* 🌑 Modo oscuro */

@@ -7,8 +7,8 @@ export default function Automatizacion() {
       <h2 className="servicio-title">Automatización</h2>
       <div className="servicio-content">
         <p>
-          Automatiza la generación de documentos, gestión de tareas, envío de reportes o traspaso de datos entre
-          herramientas. Elimina tareas manuales, reduce errores y libera tiempo para lo importante.
+          ¿Cuánto tiempo pierde tu equipo en tareas repetitivas? Automatiza procesos, reportes, flujos de trabajo y
+          traspaso de datos entre herramientas. Menos errores, más tiempo para lo que importa.
         </p>
       </div>
     </div>

@@ -56,7 +56,7 @@ export default function Contact() {
           />
           <textarea
             name="message"
-            placeholder="Describe qué te preocupa y donde crees que tu negocio se estanca."
+            placeholder="Describe qué te preocupa y dónde crees que tu negocio se estanca."
             value={formData.message}
             onChange={handleChange}
             rows="6"

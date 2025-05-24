@@ -1,0 +1,41 @@
+.strip-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-content {
+  display: flex;
+  animation: scroll-left 35s linear infinite;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-right: 4rem;
+}
+
+.item h3 {
+  font-size: 5rem;
+  margin-right: 4rem;
+  white-space: nowrap;
+  font-weight: 300;
+}
+
+.item img {
+  height: 36px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

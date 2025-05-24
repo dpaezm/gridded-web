@@ -41,8 +41,8 @@ export default function agenteTexto() {
     <div className="servicio-container" onClick={handleClickOutside}>
       <h2 className="servicio-title">Agentes de texto</h2>
       <p>
-        Automatiza la respuesta a mensajes por WhatsApp. Atiende consultas repetitivas, gestiona reservas y mejora tu
-        atención al cliente sin esfuerzo.
+        Deja que un agente se encargue de los mensajes que repites todos los días. Responde por WhatsApp, email o chat
+        web. Gestiona reservas, dudas frecuentes y soporte sin agobios.
       </p>
       <audio ref={audioRef} onEnded={() => setIsPlaying(false)} onPause={() => setIsPlaying(false)} />
 

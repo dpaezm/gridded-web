@@ -4,10 +4,19 @@
   align-items: center;
 }
 
+section.servicios {
+  padding: 72px var(--spacing-large);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
 .servicios > * {
   width: 100%;
 }
 
-.servicios h3 {
-  margin: 4rem 0 1rem 0;
+/* section.servicios h3 {
+  padding-bottom: 2.5rem;
 }
+ */

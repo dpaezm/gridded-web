@@ -1,5 +1,4 @@
 import "./Nav.css";
-import logo from "../assets/Gridded_logo_linear_white.svg";
 
 export default function Nav() {
   return (
