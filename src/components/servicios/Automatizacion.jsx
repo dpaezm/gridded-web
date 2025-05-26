@@ -3,7 +3,7 @@ import "./Agente-Automatizacion.css";
 
 export default function Automatizacion() {
   return (
-    <div className="servicio-container">
+    <div className="servicio-container" id="automatizacion">
       <h2 className="servicio-title">Automatización</h2>
       <div className="servicio-content">
         <p>

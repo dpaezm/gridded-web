@@ -10,31 +10,31 @@
     "id": 3,
     "problema": "Proveedor de materiales y construcción: miles de emails diarios solicitando precios, stock y entregas.",
     "solucion": "Automatización que procesa y genera borradores de respuesta a cada email en segundos, con la información en tiempo real aportada por el sistema de gestión de la empresa.",
-    "beneficio": "Más tiempo para que los agentes comerciales puedan atender a los clientes que realmente necesitan hablar con un humano."
+    "beneficio": "Más tiempo para que los agentes comerciales puedan atender a los clientes que realmente necesitan hablar con una persona."
   },
   {
     "id": 4,
-    "problema": "Gestión de recepciones de pequeños hoteles. Llamadas continuas preguntando por información, estado de reservas, cambios de fechas, cancelaciones, etc.",
+    "problema": "Gestión de recepciones de hoteles. Llamadas continuas preguntando por información, estado de reservas, cambios de fechas, cancelaciones, etc.",
     "solucion": "Agente de voz conectado al sistema de gestión del hotel. Aporta información en tiempo real, precios y disponibilidad de habitaciones.",
-    "beneficio": "Aumento de la satisfacción del cliente, respuestas 24 horas, reducción de coste de personal."
+    "beneficio": "Aumento de la satisfacción del cliente, respuestas las veinticuatro horas del día, reducción de coste de personal."
   },
   {
     "id": 6,
     "problema": "Restaurante pierde clientes por no gestionar reservas fuera de su horario de apertura.",
-    "solucion": "Agente que responde el telefono y atiende a las reservas las 24 horas, agenda citas y envía recordatorios.",
+    "solucion": "Agente que responde el telefono y atiende llamadas las veinticuatro horas del día, agenda citas y envía recordatorios.",
     "beneficio": "Aumento del numero de reservas. Clientes mas contentos por poder hacer reservas a cualquier hora."
   },
   {
     "id": 5,
     "problema": "Flujos internos para pymes industriales o logísticas: procesos duplicados en diferentes departamentos.",
     "solucion": "Dashboard de control en tiempo real. Automatización de validaciones, pedidos, informes o avisos.",
-    "beneficio": "Olvida el papel. Menos errores, más velocidad, y control total del proceso."
+    "beneficio": "Olvida el papel. Menos errores, más velocidad, y control en tiempo real del proceso."
   },
   {
     "id": 1,
-    "problema": "Clínica estética que no puede atender goteo de llamadas 24 horas.",
+    "problema": "Clínica estética que no puede atender goteo de llamadas.",
     "solucion": "Agente por voz que responde, informa, agenda, cancela y confirma citas. ",
-    "beneficio": "Reduce coste de una persona en recepción, a la vez que aumenta el numero de clientes respondidos."
+    "beneficio": "Reduce coste de personal en recepción, a la vez que aumenta el numero de clientes respondidos."
   },
   {
     "id": 7,

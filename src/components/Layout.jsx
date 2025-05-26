@@ -1,6 +1,7 @@
 import Nav from "./Nav";
 import Footer from "./Footer";
-import { ToastContainer } from "react-toastify";
+import { Bounce, ToastContainer } from "react-toastify";
+import "../styles/toastify-custom.css";
 
 export default function Layout({ children }) {
   return (
@@ -12,11 +13,14 @@ export default function Layout({ children }) {
         position="bottom-center"
         autoClose={4000}
         hideProgressBar={false}
-        closeOnClick
+        newestOnTop
+        closeOnClick={false}
+        rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover
+        pauseOnHover={false}
         theme="dark"
+        transition={Bounce}
       />
     </>
   );

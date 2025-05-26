@@ -82,8 +82,8 @@ export default function AgenteConversacional() {
 
   return (
     <div className="servicio-container" onClick={handleClickOutside}>
+      <h2 className="servicio-title">Agentes de voz</h2>
       <div className="servicio-content">
-        <h2 className="servicio-title">Agentes de voz</h2>
         <p>
           Tu equipo no puede estar todo el día al teléfono. Responde llamadas frecuentes automáticamente con un agente
           de voz. Ideal para cualquier negocio, call center o servicio que reciba muchas llamadas.

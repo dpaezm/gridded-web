@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Contact.css";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { sendContactForm } from "../utils/helpers/contactFormService";
 
@@ -20,7 +20,7 @@ export default function Contact() {
     try {
       const res = await sendContactForm(formData);
       if (res.ok) {
-        toast.success("Tu mensaje se ha enviado. En breve nos pondremos en contacto contigo.");
+        toast.success("🚀 Tu mensaje se ha enviado. En breve nos pondremos en contacto contigo.");
         setFormData({ name: "", email: "", message: "" });
       } else {
         toast.error("Hubo un error al enviar el mensaje");
@@ -63,15 +63,6 @@ export default function Contact() {
           </p>
           <button type="submit">Quiero empezar el proceso</button>
         </form>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={4000}
-          hideProgressBar={false}
-          closeOnClick
-          pauseOnHover
-          draggable
-          theme="light"
-        />
       </div>
     </section>
   );

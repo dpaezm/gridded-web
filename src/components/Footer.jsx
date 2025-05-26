@@ -40,7 +40,7 @@ export default function Footer() {
         <li>
           <ul className="footer-links">
             <li>
-              <a href="#servicios">Servicios</a>
+              <a href="#agentes">Agentes</a>
             </li>
             <li>
               <a href="#automatizacion">Automatización</a>

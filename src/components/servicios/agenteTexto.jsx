@@ -24,10 +24,11 @@ export default function agenteTexto() {
 
   return (
     <div className="servicio-container" onClick={handleClickOutside}>
+      <h2 className="servicio-title">Agentes de texto</h2>
       <div className="servicio-content agente-texto-flex">
-        <h2 className="servicio-title">Agentes de texto</h2>
         <p>
-          Deja que un agente se encargue de los mensajes que repites todos los días. Responde por WhatsApp, email o chat web. Gestiona reservas, dudas frecuentes y soporte sin agobios.
+          Deja que un agente se encargue de los mensajes que repites todos los días. Responde por WhatsApp, email o chat
+          web. Gestiona reservas, dudas frecuentes y soporte sin agobios.
         </p>
         <div className="agente-texto-layout">
           <div className="servicio-options">
@@ -36,9 +37,7 @@ export default function agenteTexto() {
             <Reservas isActive={activeOption === "reservas"} onClick={() => handleOptionClick("reservas")} />
           </div>
           <div className={`chat-demo-wrapper${showPlayer ? " show" : ""}`}>
-            {showPlayer && activeOption && (
-              <ChatConAgente tipo={activeOption} />
-            )}
+            {showPlayer && activeOption && <ChatConAgente tipo={activeOption} />}
           </div>
         </div>
       </div>
