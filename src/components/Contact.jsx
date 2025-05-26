@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Contact.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { sendContactForm } from "../utils/helpers/contactFormService";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -17,14 +18,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("http://localhost:5678/webhook-test/gridded-contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
+      const res = await sendContactForm(formData);
       if (res.ok) {
         toast.success("Tu mensaje se ha enviado. En breve nos pondremos en contacto contigo.");
         setFormData({ name: "", email: "", message: "" });

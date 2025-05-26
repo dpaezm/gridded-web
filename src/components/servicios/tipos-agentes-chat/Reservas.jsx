@@ -1,7 +1,7 @@
 import React from "react";
 import "./agente-texto.css";
 
-export default function Reservas({ isActive, isPlaying, onClick }) {
+export default function Reservas({ isActive, onClick }) {
   return (
     <div className="agente-option">
       <button
@@ -11,16 +11,8 @@ export default function Reservas({ isActive, isPlaying, onClick }) {
           onClick();
         }}
       >
-        [ Reservas ] {isPlaying && <span className="playing-indicator">▶</span>}
+        [ Reservas ]
       </button>
-
-      {isActive && (
-        <div className="option-content">
-          <div className="audio-player-container">
-            <p>FOTO AQUI</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

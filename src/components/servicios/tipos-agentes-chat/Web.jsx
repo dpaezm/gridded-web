@@ -1,7 +1,7 @@
 import React from "react";
 import "./agente-texto.css";
 
-export default function Web({ isActive, isPlaying, onClick }) {
+export default function Web({ isActive, onClick }) {
   return (
     <div className="agente-option">
       <button
@@ -11,14 +11,8 @@ export default function Web({ isActive, isPlaying, onClick }) {
           onClick();
         }}
       >
-        [ soporte ] {isPlaying && <span className="playing-indicator">▶</span>}
+        [ soporte ]
       </button>
-
-      {isActive && (
-        <div className="option-content">
-          <p>FOTO AQUI</p>
-        </div>
-      )}
     </div>
   );
 }

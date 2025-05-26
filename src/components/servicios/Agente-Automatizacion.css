@@ -54,5 +54,26 @@
   text-align: center;
 }
 
+.agente-texto-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* O usa la variable de espacio que prefieras */
+}
+
+.servicio-options {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem; /* O la variable correspondiente */
+}
+
+.chat-demo-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.chat-demo-wrapper.show {
+  max-height: 600px; /* Ajusta según el contenido */
+}
+
 @media (max-width: 768px) {
 }
