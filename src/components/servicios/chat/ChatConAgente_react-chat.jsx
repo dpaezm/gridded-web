@@ -1,4 +1,4 @@
-// ChatConAgente.jsx
+/* // ChatConAgente.jsx
 import "react-chat-elements/dist/main.css";
 import { Input, MessageBox } from "react-chat-elements";
 import "./ChatConAgente.css";
@@ -80,7 +80,7 @@ export default function ChatConAgente({ tipo }) {
             type="text"
             title={msg.role === "user" ? "Tú" : "Agente Gridded"}
             text={msg.text}
-            /*             date={msg.timestamp ? new Date(msg.timestamp) : new Date()} */
+            /*             date={msg.timestamp ? new Date(msg.timestamp) : new Date()} 
             avatar={
               msg.role === "user"
                 ? "https://ui-avatars.com/api/?name=Usuario"
@@ -118,3 +118,4 @@ export default function ChatConAgente({ tipo }) {
     </div>
   );
 }
+ */

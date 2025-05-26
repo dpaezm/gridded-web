@@ -3,7 +3,7 @@ import "./Agente-Automatizacion.css";
 import WhatsApp from "./tipos-agentes-chat/WhatsApp";
 import Web from "./tipos-agentes-chat/Web";
 import Reservas from "./tipos-agentes-chat/Reservas";
-import ChatConAgente from "./../ChatConAgente";
+import ChatConAgente from "./chat/ChatConAgente";
 
 export default function agenteTexto() {
   const [activeOption, setActiveOption] = useState(null);

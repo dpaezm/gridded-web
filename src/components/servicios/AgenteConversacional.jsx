@@ -64,8 +64,12 @@ export default function AgenteConversacional() {
 
     try {
       const audioUrl = `/audio/${option}/${
-        option === "callcenter" ? "caso-uso-2" : option === "recepcion" ? "caso-uso-3" : "caso-uso-4"
-      }.m4a`;
+        option === "callcenter"
+          ? "callcenter.m4a"
+          : option === "recepcion"
+          ? "recepcionhotel.wav"
+          : "atencioncliente.mp3"
+      }`;
 
       await wavesurferRef.current.load(audioUrl);
       setIsLoading(false);

@@ -3,7 +3,7 @@
 :root {
   /* 🎨 Colores por defecto (modo claro) */
   --color-bg: rgb(255, 255, 255); /* Fondo principal */
-  --color-bg-alt: rgb(237, 237, 237); /* Fondo alternativo */
+  --color-bg-alt: #ededed; /* Fondo alternativo */
   --color-text: #21242e; /* Texto principal */
   --color-text-alt: rgb(127, 126, 144); /* Texto secundario */
   --color-border: #020013; /* Bordes suaves */

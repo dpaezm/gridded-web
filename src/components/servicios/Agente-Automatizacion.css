@@ -58,6 +58,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem; /* O usa la variable de espacio que prefieras */
+  align-items: center;
 }
 
 .servicio-options {
