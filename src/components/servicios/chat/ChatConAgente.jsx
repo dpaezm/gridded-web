@@ -79,7 +79,7 @@ export default function ChatConAgente({ tipo }) {
       <div className="iphone-chat-header">Agente Gridded.Agency</div>
       <div className="iphone-chat-messages" ref={chatBoxRef}>
         <div className="bubble bubble-agent">
-          <span className="bubble-text">Hola, ¿en qué puedo ayudarte?</span>
+          <span className="bubble-text">Hola, puedes ponerme a prueba? </span>
         </div>
         {messages.map((msg, i) => (
           <div key={i} className={msg.fromUser ? "bubble bubble-user" : "bubble bubble-agent"}>

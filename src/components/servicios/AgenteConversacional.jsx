@@ -6,6 +6,9 @@ import AtencionCliente from "./tipos-agentes-conversacionales/AtencionCliente";
 import Recepcion from "./tipos-agentes-conversacionales/Recepcion";
 import CallCenter from "./tipos-agentes-conversacionales/CallCenter";
 import { createWaveSurfer } from "./../../utils/helpers/createWaveSurfer";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
+import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 
 export default function AgenteConversacional() {
   const [activeOption, setActiveOption] = useState(null);
@@ -111,7 +114,13 @@ export default function AgenteConversacional() {
           <div ref={waveformRef} className="waveform-container" />
           <div className="wavesurfer-controls">
             <button onClick={() => wavesurferRef.current?.playPause()} disabled={!isWaveSurferReady || isLoading}>
-              {isLoading ? "⌛" : isPlaying ? "⏸" : "▶"}
+              {isLoading ? (
+                <HourglassEmptyIcon sx={{ color: "var(--color-text)" }} />
+              ) : isPlaying ? (
+                <PauseIcon sx={{ color: "var(--color-text)" }} />
+              ) : (
+                <PlayArrowIcon sx={{ color: "var(--color-text)" }} />
+              )}
             </button>
           </div>
         </div>
