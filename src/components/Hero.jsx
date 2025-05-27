@@ -16,8 +16,8 @@ export default function Hero() {
         <h1>
           Automatizamos tareas repetitivas para que ganes tiempo, reduzcas costes y tu empresa crezca sin fricción.
         </h1>
-        <a href="#useCases" className="hero-link">
-          [ Casos de uso ]
+        <a href="#agentes" className="hero-link">
+          [ Descubre cómo ]
         </a>
       </div>
     </section>

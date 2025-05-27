@@ -1,15 +1,12 @@
 .option-header {
-  all: unset;
   line-height: 2rem;
   text-transform: uppercase;
-  font-size: 14px;
-  font-weight: 500;
+
   background: none;
   cursor: pointer;
 }
 
 .option-content {
-  all: unset;
   padding: 1rem;
   background: var(--color-bg-alt);
   border-radius: 4px;
@@ -26,16 +23,60 @@
 
 .audio-player-container {
   width: 100%;
-  padding: 16px;
-  /* background: var(--gr-grey-light); */
+  padding: var(--spacing-medium);
   border-radius: 8px;
-  margin-top: 20px;
+  margin-top: var(--spacing-medium);
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 0.3s ease, max-height 0.3s ease, padding 0.3s ease;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
   padding-top: 0;
   padding-bottom: 0;
+  transform: translateY(-30px);
+}
+
+.audio-player-container.show {
+  opacity: 1;
+  max-height: 500px;
+  padding-top: var(--spacing-medium);
+  padding-bottom: var(--spacing-medium);
+  transform: translateY(0);
+  width: 100%;
+}
+
+/* Slide-down para cualquier contenedor de opciones con transición */
+.slide-down {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(-40px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.slide-down.visible {
+  opacity: 1;
+  max-height: 900px;
+  transform: translateY(0);
+}
+
+.center-btn-row {
+  width: 100%;
+  text-align: center;
+  display: block;
+  padding: var(--spacing-small) 0;
+}
+.center-btn-row > .option-header {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* Botones que activan transiciones */
+.slide-btn {
+  transition: box-shadow 0.3s, background 0.3s, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.slide-btn:active {
+  transform: scale(0.96) translateY(2px);
+  background: var(--color-bg-alt, #f5f5f5);
 }
 
 .audio-player-container.show {
@@ -100,16 +141,48 @@
   justify-content: center;
 }
 
-.wavesurfer-controls button {
+button.icono {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   font-size: 1.2rem;
   border: none;
-  background-color: var(--gr-coral);
+  background-color: var(--gr-black);
   border-radius: 4px;
   cursor: pointer;
   height: 40px;
   width: 50px;
+}
+
+a.icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: none;
+  background-color: var(--gr-black);
+  border-radius: 4px;
+  cursor: pointer;
+  height: 40px;
+  width: 50px;
+}
+
+span.icon-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.icon-wrapper svg {
+  color: var(--gr-white);
+  transition: color 0.3s ease;
+}
+
+button.icono:hover svg {
+  color: var(--gr-coral);
+}
+
+a.icono:hover svg {
+  color: var(--gr-coral);
 }

@@ -112,10 +112,3 @@ a {
   font-weight: 500;
   background-color: transparent;
 }
-
-/* Botones con tipografía */
-button {
-  font-family: var(--font-primary);
-  font-weight: 600;
-  font-size: var(--text-sm);
-}

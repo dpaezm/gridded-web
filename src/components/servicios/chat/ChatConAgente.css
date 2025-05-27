@@ -118,8 +118,9 @@
   transition: background 0.2s, box-shadow 0.2s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
 }
-.iphone-chat-send-btn:hover {
-  background: var(--gr-grey-dark);
+
+.iphone-chat-send-btn:hover svg {
+  color: var(--gr-coral);
 }
 
 .loading {

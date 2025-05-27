@@ -9,7 +9,7 @@ export function createWaveSurfer(container) {
     container: container,
     waveColor: rootStyles.getPropertyValue("--gr-grey-light").trim(),
     progressColor: rootStyles.getPropertyValue("--color-text").trim(),
-    cursorColor: rootStyles.getPropertyValue("--gr-electric-blue").trim(),
+    cursorColor: rootStyles.getPropertyValue("--color-text").trim(),
     barWidth: 3,
     height: 100,
   });

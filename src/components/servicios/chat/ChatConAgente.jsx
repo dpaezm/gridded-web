@@ -79,7 +79,9 @@ export default function ChatConAgente({ tipo }) {
       <div className="iphone-chat-header">Agente Gridded.Agency</div>
       <div className="iphone-chat-messages" ref={chatBoxRef}>
         <div className="bubble bubble-agent">
-          <span className="bubble-text">Hola, puedes ponerme a prueba? </span>
+          <span className="bubble-text">
+            Hola. Hazme consultas sobre las dudas que tengas para implantar IA en tu negocio.{" "}
+          </span>
         </div>
         {messages.map((msg, i) => (
           <div key={i} className={msg.fromUser ? "bubble bubble-user" : "bubble bubble-agent"}>
@@ -102,7 +104,9 @@ export default function ChatConAgente({ tipo }) {
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
         />
         <button className="iphone-chat-send-btn" onClick={handleSend}>
-          <SendIcon />
+          <span>
+            <SendIcon />
+          </span>
         </button>
       </div>
     </div>

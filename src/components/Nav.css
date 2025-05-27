@@ -36,13 +36,14 @@
 .nav li {
   display: flex;
   justify-content: space-evenly;
-  border-top: 1px solid var(--color-border);
+
   border-bottom: 1px solid var(--color-border);
 }
 
 .nav li:nth-child(2) {
   border-left: 1px solid var(--color-border);
   border-right: 1px solid var(--color-border);
+  padding: 0 0.5rem;
 }
 
 .nav-logo img {

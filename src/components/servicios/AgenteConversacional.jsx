@@ -1,131 +1,37 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./Agente-Automatizacion.css";
-import "./tipos-agentes-conversacionales/tiposAgentes.css";
-import "./../../styles/variables.css";
-import AtencionCliente from "./tipos-agentes-conversacionales/AtencionCliente";
-import Recepcion from "./tipos-agentes-conversacionales/Recepcion";
-import CallCenter from "./tipos-agentes-conversacionales/CallCenter";
-import { createWaveSurfer } from "./../../utils/helpers/createWaveSurfer";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import PauseIcon from "@mui/icons-material/Pause";
-import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
+import React, { useState, useRef, useEffect } from "react";
+import PruebaAgenteLlamada from "./tipos-agentes-conversacionales/PruebaAgenteLlamada";
+import LayoutAgentesConversacionales from "./tipos-agentes-conversacionales/LayoutAgentesConversacionales";
 
 export default function AgenteConversacional() {
-  const [activeOption, setActiveOption] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [showPlayer, setShowPlayer] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isWaveSurferReady, setIsWaveSurferReady] = useState(false);
-  const [showLoadingMessage, setShowLoadingMessage] = useState(false);
-  const waveformRef = useRef(null);
-  const wavesurferRef = useRef(null);
+  const [showCasosUso, setShowCasosUso] = useState(false);
+  const [shouldRenderCasosUso, setShouldRenderCasosUso] = useState(false);
+  const timeoutRef = useRef();
 
   useEffect(() => {
-    if (waveformRef.current && !wavesurferRef.current) {
-      try {
-        wavesurferRef.current = createWaveSurfer(waveformRef.current);
-        setIsWaveSurferReady(true);
-
-        wavesurferRef.current.on("error", (error) => console.error("WaveSurfer error:", error));
-        wavesurferRef.current.on("play", () => setIsPlaying(true));
-        wavesurferRef.current.on("pause", () => setIsPlaying(false));
-        wavesurferRef.current.on("finish", () => setIsPlaying(false));
-      } catch (error) {
-        console.error("Error initializing WaveSurfer:", error);
-      }
+    if (showCasosUso) {
+      setShouldRenderCasosUso(true);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    } else {
+      // Espera a que termine la animación antes de desmontar
+      timeoutRef.current = setTimeout(() => setShouldRenderCasosUso(false), 500);
     }
-
-    return () => {
-      wavesurferRef.current?.destroy();
-      wavesurferRef.current = null;
-    };
-  }, []);
-
-  const handleClickOutside = (e) => {
-    if (!e.target.closest(".servicio-content")) {
-      setActiveOption(null);
-      wavesurferRef.current?.pause();
-      setIsPlaying(false);
-    }
-  };
-
-  const handleOptionClick = async (option) => {
-    if (!wavesurferRef.current) return;
-
-    const wasActive = activeOption === option;
-    setActiveOption(wasActive ? null : option);
-
-    if (wasActive) {
-      setShowPlayer(false);
-      setIsPlaying(false);
-      wavesurferRef.current.pause();
-      return;
-    }
-
-    setShowPlayer(true);
-    setIsLoading(true);
-
-    try {
-      const audioUrl = `/audio/${option}/${
-        option === "callcenter"
-          ? "callcenter.m4a"
-          : option === "recepcion"
-          ? "recepcionhotel.wav"
-          : "atencioncliente.mp3"
-      }`;
-
-      await wavesurferRef.current.load(audioUrl);
-      setIsLoading(false);
-      wavesurferRef.current.play();
-    } catch (error) {
-      console.error("Error loading or playing audio:", error);
-      setIsLoading(false);
-    }
-  };
+    return () => timeoutRef.current && clearTimeout(timeoutRef.current);
+  }, [showCasosUso]);
 
   return (
-    <div className="servicio-container" onClick={handleClickOutside}>
+    <div className="servicio-container">
       <h2 className="servicio-title">Agentes de voz</h2>
       <div className="servicio-content">
         <p>
           Tu equipo no puede estar todo el día al teléfono. Responde llamadas frecuentes automáticamente con un agente
           de voz. Ideal para cualquier negocio, call center o servicio que reciba muchas llamadas.
         </p>
-
-        <div className="servicio-options">
-          <CallCenter
-            isActive={activeOption === "callcenter"}
-            isPlaying={isPlaying && activeOption === "callcenter"}
-            onClick={() => isWaveSurferReady && handleOptionClick("callcenter")}
-          />
-          <Recepcion
-            isActive={activeOption === "recepcion"}
-            isPlaying={isPlaying && activeOption === "recepcion"}
-            onClick={() => isWaveSurferReady && handleOptionClick("recepcion")}
-          />
-          <AtencionCliente
-            isActive={activeOption === "atencioncliente"}
-            isPlaying={isPlaying && activeOption === "atencioncliente"}
-            onClick={() => isWaveSurferReady && handleOptionClick("atencioncliente")}
-          />
+        <div className="servicio-options" id="prueba-agente-llamada">
+          <PruebaAgenteLlamada onShowCasosUso={() => setShowCasosUso((v) => !v)} />
         </div>
-
-        <div className={`audio-player-container ${showPlayer ? "show" : ""}`}>
-          <div ref={waveformRef} className="waveform-container" />
-          <div className="wavesurfer-controls">
-            <button onClick={() => wavesurferRef.current?.playPause()} disabled={!isWaveSurferReady || isLoading}>
-              {isLoading ? (
-                <HourglassEmptyIcon sx={{ color: "var(--color-text)" }} />
-              ) : isPlaying ? (
-                <PauseIcon sx={{ color: "var(--color-text)" }} />
-              ) : (
-                <PlayArrowIcon sx={{ color: "var(--color-text)" }} />
-              )}
-            </button>
-          </div>
+        <div className={`servicio-options slide-down${showCasosUso ? " visible" : ""}`}>
+          {shouldRenderCasosUso && <LayoutAgentesConversacionales />}
         </div>
-
-        {showLoadingMessage && <div className="loading-message visible">Cargando audio...</div>}
       </div>
     </div>
   );
