@@ -5,7 +5,7 @@ import Servicios from "./components/Servicios";
 import UseCases from "./components/UseCases";
 import Layout from "./components/Layout";
 import AvisoLegal from "./components/legal/AvisoLegal";
-import PoliticaCookies from "./components/legal/Politicacookies";
+import PoliticaCookies from "./components/legal/PoliticaCookies";
 import PoliticaPrivacidad from "./components/legal/PoliticaPrivacidad";
 
 // import Ventas from "./components/Ventas";
