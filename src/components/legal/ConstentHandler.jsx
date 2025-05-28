@@ -2,32 +2,28 @@ import { useEffect } from "react";
 
 export default function ConsentHandler() {
   useEffect(() => {
-    const waitForGtag = (callback) => {
+    const fireAnalytics = () => {
       if (typeof window.gtag === "function") {
-        callback();
+        window.gtag("config", "G-JD720QFSJ8");
+        console.log("✅ Google Analytics activado tras clic manual");
+      }
+    };
+
+    const tryAttach = () => {
+      const acceptBtn = document.querySelector("#cky-btn-accept"); // o usa el ID real del botón
+      if (acceptBtn) {
+        acceptBtn.addEventListener("click", fireAnalytics);
       } else {
-        const interval = setInterval(() => {
-          if (typeof window.gtag === "function") {
-            clearInterval(interval);
-            callback();
-          }
-        }, 100);
+        // Sigue intentando hasta que CookieYes cargue el botón
+        setTimeout(tryAttach, 500);
       }
     };
 
-    const handleConsentUpdate = () => {
-      if (window.CookieYes?.consent?.analytics === true) {
-        waitForGtag(() => {
-          window.gtag("config", "G-JD720QFSJ8");
-          console.log("✅ Google Analytics habilitado tras consentimiento");
-        });
-      }
-    };
-
-    window.addEventListener("cookieyes_consent_update", handleConsentUpdate);
+    tryAttach();
 
     return () => {
-      window.removeEventListener("cookieyes_consent_update", handleConsentUpdate);
+      const btn = document.querySelector("#cky-btn-accept");
+      if (btn) btn.removeEventListener("click", fireAnalytics);
     };
   }, []);
 
