@@ -41,5 +41,19 @@
         console.log("✅ Consentimiento aceptado, GA activado");
       });
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkBtn = setInterval(() => {
+          const acceptBtn = document.querySelector("#cky-btn-accept, .cky-btn-accept");
+          if (acceptBtn) {
+            clearInterval(checkBtn);
+            acceptBtn.addEventListener("click", function () {
+              gtag("config", "G-JD720QFSJ8");
+              console.log("✅ GA activado tras clic en botón de aceptar");
+            });
+          }
+        }, 300);
+      });
+    </script>
   </body>
 </html>
