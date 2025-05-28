@@ -5,14 +5,14 @@ export default function ConsentHandler() {
     const fireAnalytics = () => {
       if (typeof window.gtag === "function") {
         window.gtag("config", "G-JD720QFSJ8");
-        console.log("✅ Google Analytics activado tras consentimiento");
+        console.log("✅ Google Analytics activado");
       } else {
-        console.warn("⛔️ gtag aún no disponible");
+        console.warn("⛔️ gtag no está definido aún");
       }
     };
 
     const handler = () => {
-      setTimeout(fireAnalytics, 300); // espera ligera por si gtag carga con retraso
+      setTimeout(fireAnalytics, 500); // espera ligera tras el consentimiento
     };
 
     window.addEventListener("cookieyes_consent_update", handler);
