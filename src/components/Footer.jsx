@@ -2,9 +2,19 @@ import { useEffect, useRef } from "react";
 import "./Footer.css";
 import logo from "../assets/Gridded_logo_linear_black.svg";
 import imagotipo from "../assets/Gridded_imagotipo_black.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
   const imagotipoRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleFooterNav = (target) => {
+    navigate("/", { state: { scrollTo: target } });
+  };
+
+  const handleLogoClick = () => {
+    navigate("/", { state: { scrollTo: "top" } });
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,7 +41,7 @@ export default function Footer() {
 
   return (
     <section className="footer" id="footer">
-      <div className="footer-logo">
+      <div className="footer-logo" style={{ cursor: "pointer" }} onClick={handleLogoClick}>
         <img ref={imagotipoRef} src={imagotipo} alt="logo Gridded Agency" className="imagotipo" />
         <p id="logo2">GRIDDED.AGENCY</p>
       </div>
@@ -40,23 +50,40 @@ export default function Footer() {
         <li>
           <ul className="footer-links">
             <li>
-              <a href="#agentes">Agentes</a>
+              <button className="footer-btn" onClick={() => handleFooterNav("agentes")}>
+                Agentes
+              </button>
             </li>
             <li>
-              <a href="#automatizacion">Automatización</a>
+              <button className="footer-btn" onClick={() => handleFooterNav("automatizacion")}>
+                Automatización
+              </button>
             </li>
             <li>
-              <a href="#contact">Contacto</a>
+              <button className="footer-btn" onClick={() => handleFooterNav("contact")}>
+                Contacto
+              </button>
             </li>
           </ul>
         </li>
         <li>
-          <a href="mailto:hello@gridded.agency?subject=Ayúdame%20a%20automatizar%20mi%20negocio">
+          <a href="mailto:hello@gridded.agency?subject=Quiero%20automatizar%20mi%20empresa">
             [ Hello ] [ @ ] [ gridded.agency ]
           </a>
+          <p>[ &copy; ] [ 2025 ]</p>
         </li>
         <li>
-          <p>[ &copy; ] [ 2025 ]</p>
+          <ul>
+            <li>
+              <a href="/aviso-legal">[ Aviso legal ]</a>
+            </li>
+            <li>
+              <a href="/politica-de-cookies">[ Política de cookies ]</a>
+            </li>
+            <li>
+              <a href="/politica-de-privacidad">[ Política de privacidad ]</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </section>

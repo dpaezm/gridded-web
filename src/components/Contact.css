@@ -70,5 +70,18 @@
   border-color: var(--gr-black);
 }
 
+label.checkbox-politica-privacidad {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-small);
+  font-size: var(--text-xs);
+}
+
+label.checkbox-politica-privacidad input {
+  width: auto;
+  margin-left: var(--spacing-small);
+}
+
 @media (max-width: 768px) {
 }

@@ -1,0 +1,26 @@
+div.legal-container {
+  padding: var(--spacing-large);
+  flex-grow: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-large);
+  margin-bottom: 3rem;
+}
+
+.legal-container > * {
+  text-align: start;
+}
+
+.legal-container h2 {
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: 2;
+}
+
+.legal-container p,
+.legal-container li {
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}

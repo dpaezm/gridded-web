@@ -37,7 +37,6 @@ export default function Contact() {
           Solo trabajamos con empresas que pueden implementar inteligencia artificial con impacto directo en costes y
           eficiencia. Cuéntanos tu situación y valoraremos si podemos ayudarte.
         </p>
-        {/*         <h2 className="contact-title">¡Escríbenos!</h2> */}
         <form className="contact-form" onSubmit={handleSubmit}>
           <input type="text" name="name" placeholder="Nombre" value={formData.name} onChange={handleChange} required />
           <input
@@ -56,6 +55,15 @@ export default function Contact() {
             rows="6"
             required
           />
+          <div>
+            <label className="checkbox-politica-privacidad">
+              <input type="checkbox" name="privacyConsent" required />
+              He leído y acepto la{" "}
+              <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer">
+                [ política de privacidad ]
+              </a>
+            </label>
+          </div>
           <p>
             Analizamos personalmente cada solicitud.
             <br />
