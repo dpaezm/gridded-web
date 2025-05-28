@@ -5,25 +5,20 @@ export default function ConsentHandler() {
     const fireAnalytics = () => {
       if (typeof window.gtag === "function") {
         window.gtag("config", "G-JD720QFSJ8");
-        console.log("✅ Google Analytics activado tras clic manual");
-      }
-    };
-
-    const tryAttach = () => {
-      const acceptBtn = document.querySelector("#cky-btn-accept"); // o usa el ID real del botón
-      if (acceptBtn) {
-        acceptBtn.addEventListener("click", fireAnalytics);
+        console.log("✅ Google Analytics activado tras consentimiento");
       } else {
-        // Sigue intentando hasta que CookieYes cargue el botón
-        setTimeout(tryAttach, 500);
+        console.warn("⛔️ gtag aún no disponible");
       }
     };
 
-    tryAttach();
+    const handler = () => {
+      setTimeout(fireAnalytics, 300); // espera ligera por si gtag carga con retraso
+    };
+
+    window.addEventListener("cookieyes_consent_update", handler);
 
     return () => {
-      const btn = document.querySelector("#cky-btn-accept");
-      if (btn) btn.removeEventListener("click", fireAnalytics);
+      window.removeEventListener("cookieyes_consent_update", handler);
     };
   }, []);
 
