@@ -15,7 +15,7 @@ import ConsentHandler from "./components/legal/ConstentHandler";
 function App() {
   return (
     <>
-      <ConsentHandler />
+      {/*       <ConsentHandler /> */}
       <Routes>
         <Route
           path="/"
