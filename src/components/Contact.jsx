@@ -60,7 +60,7 @@ export default function Contact() {
               <input type="checkbox" name="privacyConsent" required />
               He leído y acepto la{" "}
               <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer">
-                [ política de privacidad ]
+                Política de privacidad
               </a>
             </label>
           </div>

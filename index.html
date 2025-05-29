@@ -39,24 +39,22 @@
         return match ? decodeURIComponent(match[2]) : null;
       }
 
+      console.log('⏳ Iniciando polling de consentimiento CookieYes');
       let lastConsent = null;
-      setInterval(() => {
+      function checkConsentAndUpdateGA() {
         const consentCookie = getCookie('cookieyes-consent');
+        console.log('Valor actual de cookieyes-consent:', consentCookie, 'Último consentimiento:', lastConsent);
         if (consentCookie && consentCookie !== lastConsent) {
           lastConsent = consentCookie;
-          // Intenta parsear el consentimiento (puede ser JSON o CSV)
           let analyticsConsent = false;
           try {
-            // CookieYes v4: JSON, v3: CSV
             if (consentCookie.startsWith('{')) {
               const consentObj = JSON.parse(consentCookie);
               analyticsConsent = consentObj.analytics === 'yes';
             } else {
-              // CSV: e.g. "necessary:yes,analytics:yes,advertisement:no"
               analyticsConsent = /analytics:(yes|true)/.test(consentCookie);
             }
           } catch (e) {
-            // fallback: busca analytics:yes
             analyticsConsent = /analytics:(yes|true)/.test(consentCookie);
           }
 
@@ -65,7 +63,6 @@
             ad_storage: 'denied'
           });
           if (analyticsConsent) {
-            // Forzar un page_view tras consentimiento
             gtag('event', 'page_view', { send_to: 'G-JD720QFSJ8' });
             gtag('config', 'G-JD720QFSJ8');
             console.log('✅ GA activado y page_view enviado tras consentimiento (cookie polling)');
@@ -73,7 +70,11 @@
             console.log('❌ GA bloqueado tras consentimiento (cookie polling)');
           }
         }
-      }, 500);
+      }
+      // Ejecuta al cargar por si la cookie ya está presente
+      checkConsentAndUpdateGA();
+      // Y sigue haciendo polling por si cambia
+      setInterval(checkConsentAndUpdateGA, 1000);
     </script>
   </body>
 </html>
