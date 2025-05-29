@@ -31,18 +31,40 @@
       src="https://cdn-cookieyes.com/client_data/1dd7962301f49134dd26a86f/script.js"
     ></script>
 
-    <!-- Activar GA solo tras consentimiento manual -->
+    <!-- Consentimiento GA dinámico con CookieYes -->
     <script>
-      const interval = setInterval(() => {
-        const consented = window.CookieYes?.consent?.analytics;
-        if (typeof consented !== "undefined") {
-          clearInterval(interval);
-          if (consented === true) {
-            gtag("config", "G-JD720QFSJ8");
-            console.log("\u2705 GA activado tras consentimiento (cookieyes.consent.analytics = true)");
-          }
+      // Activar GA tras consentimiento manual y actualizar Consent Mode
+      function updateConsentFromCookieYes() {
+        // Compatibilidad: CookieYes v3 y v4
+        let analyticsConsent = false;
+        let adConsent = false;
+        if (window.CookieYes && typeof window.CookieYes.getUserConsent === 'function') {
+          // v4
+          const consent = window.CookieYes.getUserConsent();
+          analyticsConsent = consent.analytics === 'yes';
+          adConsent = consent.advertisement === 'yes';
+        } else if (window.CookieYes?.consent) {
+          // v3
+          analyticsConsent = window.CookieYes.consent.analytics === true;
+          adConsent = window.CookieYes.consent.advertisement === true;
         }
-      }, 300);
+        gtag('consent', 'update', {
+          analytics_storage: analyticsConsent ? 'granted' : 'denied',
+          ad_storage: adConsent ? 'granted' : 'denied',
+        });
+        if (analyticsConsent) {
+          gtag('config', 'G-JD720QFSJ8');
+          console.log('✅ GA activado tras consentimiento (CookieYes)');
+        }
+      }
+
+      // Escuchar evento de CookieYes
+      window.addEventListener('cookieyes_consent_update', updateConsentFromCookieYes);
+
+      // Si ya hay consentimiento al cargar, ejecuta una vez
+      window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(updateConsentFromCookieYes, 500);
+      });
     </script>
   </body>
 </html>
