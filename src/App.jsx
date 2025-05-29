@@ -8,6 +8,7 @@ import AvisoLegal from "./components/legal/AvisoLegal";
 import PoliticaCookies from "./components/legal/PoliticaCookies";
 import PoliticaPrivacidad from "./components/legal/PoliticaPrivacidad";
 import ConsentHandler from "./components/legal/ConstentHandler";
+import ScrollPopup from "./components/Contact/ScrollPopUp";
 
 // import Ventas from "./components/Ventas";
 // import Subscribe from "./components/Subscribe";
@@ -26,7 +27,8 @@ function App() {
               {/* <Ventas />
             <Subscribe /> */}
               <Servicios />
-              <UseCases />
+              <UseCases id="useCases" />
+              <ScrollPopup />
               <Contact />
             </Layout>
           }
