@@ -57,6 +57,9 @@
           } catch (e) {
             analyticsConsent = /analytics:(yes|true)/.test(consentCookie);
           }
+          // DEBUG: comprobar si gtag existe
+          console.log('¿gtag existe?', typeof gtag);
+
 
           gtag('consent', 'update', {
             analytics_storage: analyticsConsent ? 'granted' : 'denied',
