@@ -79,5 +79,59 @@
       // Y sigue haciendo polling por si cambia
       setInterval(checkConsentAndUpdateGA, 1000);
     </script>
+    <!-- CookieYes script (al final del body) -->
+    <script
+      id="cookieyes"
+      type="text/javascript"
+      src="https://cdn-cookieyes.com/client_data/1dd7962301f49134dd26a86f/script.js"
+    ></script>
+
+    <!-- Consentimiento GA dinámico con CookieYes (polling de cookie) -->
+    <script>
+      // Devuelve el valor de una cookie por nombre
+      function getCookie(name) {
+        const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? decodeURIComponent(match[2]) : null;
+      }
+
+      console.log('⏳ Iniciando polling de consentimiento CookieYes');
+      let lastConsent = null;
+      function checkConsentAndUpdateGA() {
+        const consentCookie = getCookie('cookieyes-consent');
+        console.log('Valor actual de cookieyes-consent:', consentCookie, 'Último consentimiento:', lastConsent);
+        if (consentCookie && consentCookie !== lastConsent) {
+          lastConsent = consentCookie;
+          let analyticsConsent = false;
+          try {
+            if (consentCookie.startsWith('{')) {
+              const consentObj = JSON.parse(consentCookie);
+              analyticsConsent = consentObj.analytics === 'yes';
+            } else {
+              analyticsConsent = /analytics:(yes|true)/.test(consentCookie);
+            }
+          } catch (e) {
+            analyticsConsent = /analytics:(yes|true)/.test(consentCookie);
+          }
+          // DEBUG: comprobar si gtag existe
+          console.log('¿gtag existe?', typeof gtag);
+
+          gtag('consent', 'update', {
+            analytics_storage: analyticsConsent ? 'granted' : 'denied',
+            ad_storage: 'denied'
+          });
+          if (analyticsConsent) {
+            gtag('event', 'page_view', { send_to: 'G-JD720QFSJ8' });
+            gtag('config', 'G-JD720QFSJ8');
+            console.log('✅ GA activado y page_view enviado tras consentimiento (cookie polling)');
+          } else {
+            console.log('❌ GA bloqueado tras consentimiento (cookie polling)');
+          }
+        }
+      }
+      // Ejecuta al cargar por si la cookie ya está presente
+      checkConsentAndUpdateGA();
+      // Y sigue haciendo polling por si cambia
+      setInterval(checkConsentAndUpdateGA, 1000);
+    </script>
   </body>
 </html>
