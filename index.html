@@ -65,8 +65,10 @@
             ad_storage: 'denied'
           });
           if (analyticsConsent) {
+            // Forzar un page_view tras consentimiento
+            gtag('event', 'page_view', { send_to: 'G-JD720QFSJ8' });
             gtag('config', 'G-JD720QFSJ8');
-            console.log('✅ GA activado tras consentimiento (cookie polling)');
+            console.log('✅ GA activado y page_view enviado tras consentimiento (cookie polling)');
           } else {
             console.log('❌ GA bloqueado tras consentimiento (cookie polling)');
           }
