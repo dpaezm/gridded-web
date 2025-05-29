@@ -1,67 +1,133 @@
-.popup-container {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  z-index: 9999;
-  width: 300px;
-  animation: fadeIn 0.4s ease;
-}
-
-.popup-box h3 {
-  margin-top: 0;
-  font-size: 1.1rem;
-}
-
-.popup-box p {
-  font-size: 0.9rem;
-  margin: 0.5rem 0 1rem;
-}
-
-.popup-box input[type="email"] {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.popup-box label {
+.consent-label {
   font-size: 0.8rem;
-  display: block;
-  margin-bottom: 0.5rem;
+  text-align: left;
 }
 
-.popup-box button[type="submit"] {
-  width: 100%;
-  background: var(--gr-coral, #ff8a5b);
-  color: white;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.consent-label input {
+  margin: 0 0.5rem;
 }
 
-.popup-close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
+.consent-label a {
+  text-transform: none;
+}
+/* Fondo semitransparente */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-@keyframes fadeIn {
+.popup-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Caja del popup */
+.popup-box {
+  background: #ffffff;
+
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  animation: popup-appear 0.4s ease-out forwards;
+  position: relative;
+  text-align: left;
+  font-family: var(--font-primary, sans-serif);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+}
+
+/* Animación de entrada */
+@keyframes popup-appear {
   from {
+    transform: scale(0.95);
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
+    transform: scale(1);
     opacity: 1;
-    transform: translateY(0);
   }
+}
+
+/* Botón de cerrar */
+.popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Estilos de formulario */
+.popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.popup-box ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.popup-box li {
+  list-style: none;
+  margin-left: 1.5rem;
+}
+
+.popup-box li::before {
+  content: "✔";
+  margin-right: 0.5rem;
+  position: absolute;
+  left: 2rem;
+}
+
+.popup-form input[type="email"] {
+  padding: 0.75rem;
+  border: 1px solid var(--gr-black);
+  font-size: 1rem;
+}
+
+.popup-form button[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.popup-form button[type="submit"]:hover {
+  background-color: var(--gr-grey-dark);
+}
+
+/* Texto legal */
+.consent-label {
+  font-size: 0.875rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+.consent-label a {
+  color: #000;
+  font-weight: 500;
 }

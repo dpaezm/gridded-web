@@ -1,56 +1,108 @@
-// src/components/ScrollPopup.jsx
-import { useEffect, useRef, useState } from "react";
-import "./ScrollPopup.css";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import "./ScrollPopUp.css";
+import { sendEmailToAgente } from "../../utils/helpers/sendMailToAgente";
 
-export default function ScrollPopup() {
-  const [visible, setVisible] = useState(false);
-  const hasShown = useRef(false);
+export default function ScrollPopUp() {
+  const [showPopup, setShowPopup] = useState(false);
+  const [email, setEmail] = useState("");
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    const useCasesEl = document.getElementById("usecases");
+    const alreadyShown = sessionStorage.getItem("popupShown");
+    if (alreadyShown) return;
 
     const handleScroll = () => {
-      if (!useCasesEl || hasShown.current) return;
+      const useCasesSection = document.querySelector("#useCases");
+      if (!useCasesSection) return;
 
-      const rect = useCasesEl.getBoundingClientRect();
-      const halfVisible = rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2;
+      const rect = useCasesSection.getBoundingClientRect();
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const middleY = rect.top + window.scrollY + rect.height / 2;
 
-      if (halfVisible) {
-        setVisible(true);
-        hasShown.current = true;
+      if (scrollPosition > middleY) {
+        setShowPopup(true);
+        sessionStorage.setItem("popupShown", "true");
+        window.removeEventListener("scroll", handleScroll);
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleClose = () => setVisible(false);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    // Aquí conectas con tu backend/API
-    console.log("📧 Email enviado:", email);
-    setVisible(false);
+    if (!checked) return;
+
+    try {
+      await sendEmailToAgente({ email });
+      toast.success("📩 ¡Gracias! Pronto recirás nuestros emails.");
+      setTimeout(() => setShowPopup(false), 3000);
+    } catch (err) {
+      console.error("❌ Error:", err);
+      toast.error("Error al enviar el email. Inténtalo de nuevo.");
+    }
   };
 
-  if (!visible) return null;
+  const handleClose = () => {
+    setShowPopup(false);
+  };
+
+  if (!showPopup) return null;
 
   return (
-    <div className="popup-container">
+    <div className="popup-overlay visible">
       <div className="popup-box">
-        <button className="popup-close" onClick={handleClose}>
-          ×
-        </button>
-        <h3>¿Te interesan ideas frescas sobre IA y automatización?</h3>
-        <p>Déjanos tu email y te mandamos solo lo mejor.</p>
-        <form onSubmit={handleSubmit}>
-          <input type="email" name="email" placeholder="Tu correo electrónico" required />
-          <label>
-            <input type="checkbox" required /> Acepto recibir comunicaciones comerciales
+        <div className="popup-header">
+          <button className="popup-close" onClick={handleClose}>
+            ×
+          </button>
+        </div>
+        <h3>¿Te interesa lo que estás leyendo?</h3>
+        <p>
+          Si te suscribes recibirás emails de manera frecuente. <br />
+        </p>
+        <ul>
+          <li>
+            Te contaré casos de empresas que están <strong>aumentando mucho sus beneficios</strong> gracias a la IA y la
+            automatización
+          </li>
+          <li>
+            Noticias, lanzamientos y <strong>novedades del sector</strong> que considere interesantes
+          </li>
+          <li>
+            Curiosidades y cosas en las que te puedas <strong>inspirar para tu empresa</strong>
+          </li>
+          <li>
+            También habrá correos donde te intentaré <strong>vender mis servicios</strong>.
+          </li>
+        </ul>
+        <p>
+          Pero sobre todo, <strong>intentaré aportar valor</strong>.{" "}
+        </p>
+        <form onSubmit={handleSubmit} className="popup-form">
+          <input
+            type="email"
+            placeholder="Tu email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <label className="consent-label">
+            <input type="checkbox" checked={checked} onChange={(e) => setChecked(e.target.checked)} required />
+            Acepto recibir comunicaciones comerciales de Gridded Agency y la{" "}
+            <a
+              href="/politica-de-privacidad"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "underline" }}
+            >
+              política de privacidad
+            </a>
+            .
           </label>
-          <button type="submit">Suscribirme</button>
+          <button type="submit">Quiero recibirlo</button>
         </form>
       </div>
     </div>
