@@ -15,11 +15,7 @@ export default function ConsentHandler() {
       setTimeout(fireAnalytics, 500); // espera ligera tras el consentimiento
     };
 
-    window.addEventListener("cookieyes_consent_update", handler);
 
-    return () => {
-      window.removeEventListener("cookieyes_consent_update", handler);
-    };
   }, []);
 
   return null;
