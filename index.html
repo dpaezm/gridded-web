@@ -52,13 +52,14 @@
         if (!uc) return;
 
         uc.addEventListener("consent", function (consentData) {
-          const allowedServices = consentData.services.filter((s) => s.consent.status === true).map((s) => s.name);
-          allowedServices.forEach(activateScripts);
-        });
+          const allowed = consentData.services.filter((s) => s.consent.status === true).map((s) => s.name);
 
-        function activateScripts(serviceName) {
-          const scripts = document.querySelectorAll(`script[type="text/plain"][data-usercentrics="${serviceName}"]`);
+          const scripts = document.querySelectorAll('script[type="text/plain"][data-usercentrics]');
+
           scripts.forEach((oldScript) => {
+            const name = oldScript.getAttribute("data-usercentrics");
+            if (!allowed.includes(name)) return;
+
             const newScript = document.createElement("script");
             Array.from(oldScript.attributes).forEach((attr) => {
               if (attr.name !== "type" && attr.name !== "data-usercentrics") {
@@ -68,7 +69,7 @@
             newScript.text = oldScript.text;
             oldScript.parentNode.replaceChild(newScript, oldScript);
           });
-        }
+        });
       });
     </script>
   </head>
