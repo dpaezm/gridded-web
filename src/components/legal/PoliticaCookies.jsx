@@ -10,6 +10,10 @@ export default function PoliticaCookies() {
         contenidos y anuncios.
       </p>
 
+      <a href="#" onClick="UC_UI.showSecondLayer();">
+        Configuración de cookies
+      </a>
+
       <h3>¿Qué son las cookies?</h3>
       <p>
         Las cookies son pequeños archivos que se almacenan en tu navegador cuando visitas nuestra web. Permiten recordar
