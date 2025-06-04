@@ -62,6 +62,31 @@
         });
       });
     </script>
+    <script>
+      window.addEventListener("UC_UI_INITIALIZED", function () {
+        const uc = window.Usercentrics;
+        if (!uc) {
+          console.warn("❌ Usercentrics no está disponible.");
+          return;
+        }
+
+        uc.addEventListener("consent", function (data) {
+          console.log("✅ Consentimiento capturado:");
+          data.services.forEach((s) => {
+            console.log(`→ ${s.name}: ${s.consent.status ? "ACEPTADO ✅" : "DENEGADO ❌"}`);
+          });
+        });
+
+        // Comprobar si ya hay consentimiento previo
+        setTimeout(() => {
+          const current = uc.getServicesBaseInfo();
+          console.log("📦 Estado actual de consentimiento:");
+          current.forEach((s) => {
+            console.log(`→ ${s.name}: ${s.consent.status ? "ACEPTADO ✅" : "DENEGADO ❌"}`);
+          });
+        }, 2000);
+      });
+    </script>
   </head>
 
   <body>
