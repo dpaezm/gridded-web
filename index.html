@@ -6,7 +6,7 @@
     <title>Gridded.Agency</title>
     <link rel="icon" href="/favicon.png?v=1" type="image/png" />
 
-    <!-- Usercentrics CMP (sin autoblocking) -->
+    <!-- Usercentrics CMP -->
     <script
       id="usercentrics-cmp"
       src="https://web.cmp.usercentrics.eu/ui/loader.js"
@@ -14,14 +14,13 @@
       async
     ></script>
 
-    <!-- Google Analytics bloqueado hasta consentimiento -->
+    <!-- Scripts bloqueados manualmente con tipo text/plain -->
     <script
       type="text/plain"
       data-usercentrics="Google Analytics"
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-JD720QFSJ8"
     ></script>
-
     <script type="text/plain" data-usercentrics="Google Analytics">
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -31,43 +30,34 @@
       gtag("config", "G-JD720QFSJ8");
     </script>
 
-    <!-- Google Tag Manager bloqueado hasta consentimiento -->
     <script type="text/plain" data-usercentrics="Google Tag Manager">
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l !== "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-T6H8WNRG");
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-T6H8WNRG');
     </script>
 
-    <!-- Activador manual al aceptar cookies -->
+    <!-- Activador manual tras consentimiento -->
     <script>
       window.addEventListener("UC_UI_INITIALIZED", function () {
         const uc = window.Usercentrics;
         if (!uc) return;
 
-        uc.addEventListener("consent", function (consentData) {
-          const allowed = consentData.services.filter((s) => s.consent.status === true).map((s) => s.name);
-
-          const scripts = document.querySelectorAll('script[type="text/plain"][data-usercentrics]');
-
-          scripts.forEach((oldScript) => {
-            const name = oldScript.getAttribute("data-usercentrics");
-            if (!allowed.includes(name)) return;
-
-            const newScript = document.createElement("script");
-            Array.from(oldScript.attributes).forEach((attr) => {
-              if (attr.name !== "type" && attr.name !== "data-usercentrics") {
-                newScript.setAttribute(attr.name, attr.value);
-              }
+        uc.addEventListener("consent", function (data) {
+          const allowed = data.services.filter((s) => s.consent.status).map((s) => s.name);
+          allowed.forEach((service) => {
+            const scripts = document.querySelectorAll(`script[type="text/plain"][data-usercentrics="${service}"]`);
+            scripts.forEach((oldScript) => {
+              const newScript = document.createElement("script");
+              Array.from(oldScript.attributes).forEach((attr) => {
+                if (attr.name !== "type" && attr.name !== "data-usercentrics") {
+                  newScript.setAttribute(attr.name, attr.value);
+                }
+              });
+              newScript.text = oldScript.text;
+              oldScript.parentNode.replaceChild(newScript, oldScript);
             });
-            newScript.text = oldScript.text;
-            oldScript.parentNode.replaceChild(newScript, oldScript);
           });
         });
       });
@@ -75,7 +65,7 @@
   </head>
 
   <body>
-    <!-- Google Tag Manager (noscript) -->
+    <!-- GTM noscript -->
     <noscript
       ><iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-T6H8WNRG"
