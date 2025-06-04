@@ -14,14 +14,9 @@
       async
     ></script>
 
-    <!-- Scripts bloqueados manualmente con tipo text/plain -->
-    <script
-      type="text/plain"
-      data-usercentrics="Google Analytics"
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-JD720QFSJ8"
-    ></script>
-    <script type="text/plain" data-usercentrics="Google Analytics">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD720QFSJ8"></script>
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -29,77 +24,9 @@
       gtag("js", new Date());
       gtag("config", "G-JD720QFSJ8");
     </script>
-
-    <script type="text/plain" data-usercentrics="Google Tag Manager">
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-T6H8WNRG');
-    </script>
-
-    <!-- Activador manual tras consentimiento -->
-    <script>
-      function onUCReady(callback) {
-        if (window.Usercentrics) {
-          callback(window.Usercentrics);
-        } else {
-          const interval = setInterval(() => {
-            if (window.Usercentrics) {
-              clearInterval(interval);
-              callback(window.Usercentrics);
-            }
-          }, 100);
-        }
-      }
-
-      onUCReady((uc) => {
-        console.log("✅ Usercentrics detectado");
-
-        uc.addEventListener("consent", function (data) {
-          console.log("✅ Consentimiento capturado:");
-          data.services.forEach((s) => {
-            console.log(`→ ${s.name}: ${s.consent.status ? "ACEPTADO ✅" : "DENEGADO ❌"}`);
-          });
-
-          const allowed = data.services.filter((s) => s.consent.status).map((s) => s.name);
-          allowed.forEach((service) => {
-            const scripts = document.querySelectorAll(`script[type="text/plain"][data-usercentrics="${service}"]`);
-            scripts.forEach((oldScript) => {
-              const newScript = document.createElement("script");
-              Array.from(oldScript.attributes).forEach((attr) => {
-                if (attr.name !== "type" && attr.name !== "data-usercentrics") {
-                  newScript.setAttribute(attr.name, attr.value);
-                }
-              });
-              newScript.text = oldScript.text;
-              oldScript.parentNode.replaceChild(newScript, oldScript);
-            });
-          });
-        });
-
-        setTimeout(() => {
-          const current = uc.getServicesBaseInfo();
-          console.log("📦 Estado actual de consentimiento:");
-          current.forEach((s) => {
-            console.log(`→ ${s.name}: ${s.consent.status ? "ACEPTADO ✅" : "DENEGADO ❌"}`);
-          });
-        }, 2000);
-      });
-    </script>
   </head>
 
   <body>
-    <!-- GTM noscript -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-T6H8WNRG"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

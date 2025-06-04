@@ -33,8 +33,8 @@ export default function agenteTexto() {
         <div className="agente-texto-layout">
           <div className="servicio-options">
             <div className="center-btn-row">
-              <button className="option-header" onClick={() => handleOptionClick("whatsapp")}>
-                [ Prueba nuestro agente de WhatsApp]
+              <button className="option-header CTA-button" onClick={() => handleOptionClick("whatsapp")}>
+                [ Escribe a nuestro agente ]
               </button>
             </div>
             {/*             <WhatsApp isActive={activeOption === "whatsapp"} onClick={() => handleOptionClick("whatsapp")} />

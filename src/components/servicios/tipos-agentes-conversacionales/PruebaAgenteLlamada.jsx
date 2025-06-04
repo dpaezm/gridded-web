@@ -22,8 +22,8 @@ export default function PruebaAgenteLlamada({ onShowCasosUso = () => {} }) {
   return (
     <>
       <div className="center-btn-row">
-        <button className="option-header slide-btn" onClick={() => setShowDetalle((v) => !v)}>
-          [ Prueba nuestro agente telefónico ]
+        <button className="option-header slide-btn CTA-button" onClick={() => setShowDetalle((v) => !v)}>
+          [ Pruébalo tu mismo ]
         </button>
       </div>
       <div className={`agente-option slide-down${showDetalle ? " visible" : ""}`}>

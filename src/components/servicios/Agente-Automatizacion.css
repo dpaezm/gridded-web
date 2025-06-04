@@ -39,7 +39,7 @@
 }
 
 .option-header {
-  width: 100%;
+  /*   width: 100%; */
   background: none;
   border: none;
   cursor: pointer;
@@ -78,8 +78,9 @@
 .agente-texto-layout {
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* O usa la variable de espacio que prefieras */
+  gap: 2rem;
   align-items: center;
+  width: 100%;
 }
 
 .servicio-options {
